@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="ic_account_circle" transform="translate(-4098 -3746)">
+    <rect id="Base" width="24" height="24" transform="translate(4098 3746)" fill="none"/>
+    <path id="Icon" d="M130-216v2h10v-2Zm5-9a10,10,0,0,0-10,10,10,10,0,0,0,10,10,10,10,0,0,0,10-10A10,10,0,0,0,135-225Zm0,18a8.011,8.011,0,0,1-8-8,8.011,8.011,0,0,1,8-8,8.011,8.011,0,0,1,8,8A8.011,8.011,0,0,1,135-207Z" transform="translate(3975 3973)" fill="#d8d8d8"/>
+  </g>
+</svg>
