@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button } from "../button";
 import { StyledSignin } from "./signin.styles";
 import { TextInput } from "../textinput";
 import { CheckInput } from "../checkinput";
+import { MainContext } from "../../store";
+import { userUpdateNameAction } from "../../store/actions";
 
 export const Signin = () => {
-  let handleClick = (e) => {
+  const { state, dispatch } = useContext(MainContext);
+
+  const handleClick = (e) => {
     e.preventDefault();
     console.log("Clicky clicky", e);
+    dispatch(userUpdateNameAction("Raz"));
   };
 
   return (
