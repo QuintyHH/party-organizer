@@ -7,6 +7,7 @@ export const TextInput = ({
   placeholder,
   autoComplete,
   value,
+  onChange,
 }) => {
   return (
     <StyledInput
@@ -15,8 +16,7 @@ export const TextInput = ({
       placeholder={placeholder}
       autoComplete={autoComplete}
       value={value}
-    >
-      {children}
-    </StyledInput>
+      onChange={onChange}
+    />
   );
 };

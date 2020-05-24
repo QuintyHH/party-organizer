@@ -5,7 +5,7 @@ a {
 body {
   margin: 0;
   box-sizing: border-box;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-size: 12px;
   overflow: scroll;
   -ms-overflow-style: none;
