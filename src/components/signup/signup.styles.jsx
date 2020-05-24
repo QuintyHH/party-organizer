@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 
-export const StyledSignin = styled.div`
+export const StyledSignup = styled.div`
   margin-bottom: 1rem;
   display: grid;
 `;

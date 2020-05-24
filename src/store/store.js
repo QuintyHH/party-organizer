@@ -3,7 +3,10 @@ import { mainReducer } from "./reducers";
 export const MainContext = createContext();
 
 const initState = {
-  user: {},
+  user:
+    JSON.parse(window.sessionStorage.getItem("userInformation")) !== null
+      ? JSON.parse(window.sessionStorage.getItem("userInformation"))
+      : {},
   partyList: [],
 };
 

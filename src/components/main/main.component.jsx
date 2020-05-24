@@ -6,15 +6,16 @@ import { Login } from "../login";
 import { StyledWrapper } from "./main.styles";
 import { ContentWrapper } from "../content";
 import { Router } from "@reach/router";
-import { Signin } from "../signin";
+import { Signup } from "../signup";
 import { Help } from "../help";
-import { Authentication } from "../authentication-wrapper";
+import { ViewParties } from "../viewparties";
+import { AuthenticationNav } from "../authentication-nav";
 import { MainContext } from "../../store";
-//https://us-central1-party-organizer-98c23.cloudfunctions.net/api
-///user and /party
+import { CreateParty } from "../createparty";
+import { PartiesNav } from "../parties-nav";
+
 export const Main = () => {
   const { state, dispatch } = useContext(MainContext);
-  console.log(state, dispatch);
 
   return (
     <StyledWrapper data-test-id="wrapper">
@@ -24,11 +25,15 @@ export const Main = () => {
       </Header>
       <ContentWrapper>
         <Router>
-          <Authentication path="authentication">
-            <Signin path="signup" />
+          <AuthenticationNav path="authentication">
+            <Signup path="signup" />
             <Login path="login" />
-          </Authentication>
+          </AuthenticationNav>
           <Help path="help" />
+          <PartiesNav path="party">
+            <ViewParties path="new" />
+            <CreateParty path="createparty" />
+          </PartiesNav>
         </Router>
       </ContentWrapper>
     </StyledWrapper>
