@@ -15,7 +15,7 @@ import { CreateParty } from "../createparty";
 import { PartiesNav } from "../parties-nav";
 
 export const Main = () => {
-  const { state, dispatch } = useContext(MainContext);
+  // const { state, dispatch } = useContext(MainContext);
 
   return (
     <StyledWrapper data-test-id="wrapper">
@@ -23,19 +23,21 @@ export const Main = () => {
         <Menu />
         <Slider />
       </Header>
-      <ContentWrapper>
-        <Router>
+      <Router>
+        <ContentWrapper path="/">
           <AuthenticationNav path="authentication">
             <Signup path="signup" />
             <Login path="login" />
           </AuthenticationNav>
-          <Help path="help" />
-          <PartiesNav path="party">
-            <ViewParties path="new" />
+        </ContentWrapper>
+        <Help path="help" />
+        <PartiesNav path="party">
+          <ViewParties path="new" />
+          <ContentWrapper path="/">
             <CreateParty path="createparty" />
-          </PartiesNav>
-        </Router>
-      </ContentWrapper>
+          </ContentWrapper>
+        </PartiesNav>
+      </Router>
     </StyledWrapper>
   );
 };

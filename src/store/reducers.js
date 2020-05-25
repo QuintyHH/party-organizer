@@ -1,6 +1,7 @@
 import {
   USER_UPDATE_FIRSTNAME,
   USER_UPDATE_LASTNAME,
+  USER_UPDATE_DISPLAYNAME,
   USER_UPDATE_TELEPHONE,
   USER_UPDATE_EMAIL,
   USER_UPDATE_BIRTHDATE,
@@ -53,6 +54,11 @@ const userReducer = (state, action) => {
       return {
         ...state,
         role: action.role,
+      };
+    case USER_UPDATE_DISPLAYNAME:
+      return {
+        ...state,
+        displayName: action.displayName,
       };
     case USER_RESET:
       return {};

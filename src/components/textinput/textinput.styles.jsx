@@ -1,10 +1,14 @@
-import React from "react";
 import styled from "styled-components";
 
-export const StyledInput = styled.input`
+export const StyledInputWrapper = styled.div`
+  display: ${(prop) => (prop.display ? prop.display : "inline-block")};
+  width: ${(prop) => (prop.width ? prop.width : "40%")};
   margin: 1rem 5%;
+`;
+
+export const StyledInput = styled.input`
   padding: 1rem;
-  width: 40%;
+  width: 100%;
   font-size: 1rem;
   color: grey;
   box-sizing: border-box;

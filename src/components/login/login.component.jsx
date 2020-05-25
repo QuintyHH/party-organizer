@@ -12,6 +12,7 @@ import {
   userUpdateRoleAction,
   userUpdateFirstNameAction,
   userUpdateLastNameAction,
+  userUpdateDisplayNameAction,
 } from "../../store/actions";
 import { auth } from "../../data/firebase";
 
@@ -24,7 +25,6 @@ export const Login = () => {
 
   useEffect(() => {
     updateUserInformationLocally();
-    console.log(state.user);
   }, [state.user.token]);
 
   const handleClick = (e) => {
@@ -43,7 +43,7 @@ export const Login = () => {
       let role = (await auth.currentUser.getIdTokenResult()).claims.role;
       let token = await auth.currentUser.getIdToken();
       updateUserState(user, role, token);
-      navigate("/viewparties");
+      navigate("/party/new");
     } catch (err) {
       alert(err);
     }
@@ -53,6 +53,7 @@ export const Login = () => {
     updateState(userUpdateRoleAction, role);
     updateState(userUpdateFirstNameAction, user.displayName.split(" ")[0]);
     updateState(userUpdateLastNameAction, user.displayName.split(" ")[1]);
+    updateState(userUpdateDisplayNameAction, user.displayName);
     updateState(userUpdatePasswordAction, undefined);
     updateState(userUpdateTokenAction, token);
   };
@@ -68,7 +69,7 @@ export const Login = () => {
 
   return (
     <StyledLogin data-test-id="login">
-      <form>
+      <form onSubmit={handleClick}>
         <TextInput
           type="email"
           name="email"

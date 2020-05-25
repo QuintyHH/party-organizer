@@ -26,3 +26,15 @@ export const NavMenuDiv = styled.div`
   box-sizing: border-box;
   display: flex;
 `;
+
+export const NavAvatar = styled.div`
+  background-image: url(${(prop) => (prop.icon ? prop.icon : null)});
+  height: 2rem;
+  width: 2rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  border: 1px solid #b2b2b2;
+  display: flex;
+  margin: auto;
+`;

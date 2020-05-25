@@ -1,9 +1,8 @@
 import React, { useEffect, useContext } from "react";
-import axios from "axios";
 import { MainContext } from "../../store";
 
 export const Help = ({ children }) => {
-  const { state, dispatch } = useContext(MainContext);
+  const { state } = useContext(MainContext);
 
   useEffect(() => {
     console.log(state);

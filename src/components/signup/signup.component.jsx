@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Button } from "../button";
 import { StyledSignup } from "./signup.styles";
 import { TextInput } from "../textinput";

@@ -1,22 +1,27 @@
 import React from "react";
-import { StyledInput } from "./textinput.styles";
+import { StyledInput, StyledInputWrapper } from "./textinput.styles";
 export const TextInput = ({
-  children,
   type,
   name,
   placeholder,
   autoComplete,
+  label,
   value,
+  width,
+  display,
   onChange,
 }) => {
   return (
-    <StyledInput
-      type={type}
-      name={name}
-      placeholder={placeholder}
-      autoComplete={autoComplete}
-      value={value}
-      onChange={onChange}
-    />
+    <StyledInputWrapper width={width} display={display}>
+      {label}
+      <StyledInput
+        type={type}
+        name={name}
+        placeholder={placeholder}
+        autoComplete={autoComplete}
+        value={value}
+        onChange={onChange}
+      />
+    </StyledInputWrapper>
   );
 };

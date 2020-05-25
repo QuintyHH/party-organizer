@@ -11,8 +11,10 @@ export const Button = ({
   height,
   margin,
   color,
+  display,
   onClick,
   onSubmit,
+  position,
 }) => {
   return (
     <StyledButton
@@ -24,8 +26,10 @@ export const Button = ({
       padding={padding}
       margin={margin}
       color={color}
+      display={display}
       onClick={onClick}
       onSubmit={onSubmit}
+      position={position}
     >
       {children}
     </StyledButton>
