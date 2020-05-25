@@ -3,7 +3,9 @@ import { Link } from "@reach/router";
 import { Button, ButtonGroup } from "../button";
 import { PartyNavMenu, PartyNavMenuDiv } from "./parties-nav.styles";
 
-export const PartiesNav = ({ children }) => {
+export const PartiesNav = ({ children, ...props }) => {
+  console.log("partynav", props);
+
   return (
     <div>
       <PartyNavMenu>

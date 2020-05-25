@@ -8,13 +8,13 @@ import { ContentWrapper } from "../content";
 import { Router, navigate } from "@reach/router";
 import { Signup } from "../signup";
 import { Help } from "../help";
-import { ViewParties } from "../viewparties";
+import { ViewParties } from "../view-parties";
 import { AuthenticationNav } from "../authentication-nav";
-import { CreateParty } from "../createparty";
+import { CreateParty } from "../create-a-party";
 import { PartiesNav } from "../parties-nav";
-import { FavoriteParties } from "../favoriteparties";
-import { CreatedParties } from "../createdparties";
-import { JoinedParties } from "../joinedparties";
+import { FavoriteParties } from "../favorite-parties";
+import { CreatedParties } from "../created-parties";
+import { JoinedParties } from "../joined-parties";
 
 export const Main = () => {
   useEffect(() => {

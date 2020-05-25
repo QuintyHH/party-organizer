@@ -1,10 +1,9 @@
 import React, { useContext, useState } from "react";
-
 import { MainContext } from "../../store";
 import { StyledCreateParty } from "./createparty.styles";
-import { TextInput } from "../textinput";
+import { TextInput } from "../text-input";
 import { Button } from "../button";
-import axios from "axios";
+import { createParty } from "../../data/axios";
 import { navigate } from "@reach/router";
 
 export const CreateParty = () => {
@@ -16,22 +15,21 @@ export const CreateParty = () => {
   const [description, setDescription] = useState("");
   const discardIcon = "/assets/ic_delete.svg";
 
-  const createParty = async () => {
-    try {
-      const author = state.user.displayName;
-      axios.defaults.headers.common = {
-        Authorization: `Bearer ${state.user.token}`,
-      };
-      await axios.post(
-        "https://us-central1-party-organizer-98c23.cloudfunctions.net/api/party",
-        { author, name, description, endDate, startDate, avatarURL }
-      );
-    } catch (err) {
-      alert(err);
-    }
+  const handleCreateParty = () => {
+    let token = state.user.token;
+    let author = state.user.displayName;
+    let payload = {
+      author,
+      name,
+      description,
+      endDate,
+      startDate,
+      avatarURL,
+    };
+    createParty(token, payload);
   };
 
-  const discard = async () => {
+  const handleDiscard = async () => {
     navigate("/party/new");
   };
 
@@ -83,7 +81,7 @@ export const CreateParty = () => {
           onChange={(e) => setDescription(e.target.value)}
         />
         <Button
-          onClick={createParty}
+          onClick={handleCreateParty}
           background="#0178FF"
           color="white"
           radius="50px"
@@ -96,7 +94,7 @@ export const CreateParty = () => {
         </Button>
         <Button
           icon={discardIcon}
-          onClick={discard}
+          onClick={handleDiscard}
           radius="50px"
           margin="1rem 0 1rem 1rem"
           display="inline-flex"

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Button } from "../button";
 import { StyledLogin } from "./login.styles";
-import { TextInput } from "../textinput";
+import { TextInput } from "../text-input";
 import { MainContext } from "../../store";
 import { navigate } from "@reach/router";
 

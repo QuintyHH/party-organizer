@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { MainContext } from "../../store";
-import axios from "axios";
+import { attendParty } from "../../data/axios";
 import {
   StyledPartyRow,
   PartyListImg,
@@ -27,28 +27,22 @@ export const PartyRow = ({ children }) => {
     }
   };
 
-  const addToAttend = async () => {
-    try {
-      const atendeeList = {
+  const addToAttend = () => {
+    const token = state.user.token;
+    const payload = {
+      ...children,
+      atendeeList: {
         ...children.atendeeList,
-        id: state.user.displayName,
-      };
-      axios.defaults.headers.common = {
-        Authorization: `Bearer ${state.user.token}`,
-      };
-      await axios.post(
-        "https://us-central1-party-organizer-98c23.cloudfunctions.net/api/party",
-        { ...children, atendeeList }
-      );
-    } catch (err) {
-      alert(err);
-    }
+        [state.user.uid]: state.user.displayName,
+      },
+    };
+    attendParty(token, payload);
   };
 
   return (
     <StyledPartyRow>
       {children.avatarURL ? (
-        <PartyListImg src={children.avatarURLavatar} />
+        <PartyListImg src={children.avatarURL} />
       ) : (
         <PartyListImgTiny src={avatar} />
       )}

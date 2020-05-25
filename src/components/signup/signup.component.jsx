@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { Button } from "../button";
 import { StyledSignup } from "./signup.styles";
-import { TextInput } from "../textinput";
-import { CheckInput } from "../checkinput";
+import { TextInput } from "../text-input";
+import { CheckInput } from "../check-input";
 import { MainContext } from "../../store";
-import axios from "axios";
+import { createUser } from "../../data/axios";
 import {
   userUpdateFirstNameAction,
   userUpdateLastNameAction,
@@ -26,31 +26,21 @@ export const Signup = () => {
     console.log("Clicky clicky", state.user);
     e.preventDefault();
     if (state.user.email && state.user.pass && state.user.firstname) {
-      createUser();
+      handleCreateUser();
     } else {
       alert("Error: All fields are required!");
     }
   };
 
-  const createUser = async () => {
-    try {
-      const role = "user";
-      const displayName = state.user.firstname;
-      const email = state.user.email;
-      const password = state.user.pass;
-      await axios.post(
-        "https://us-central1-party-organizer-98c23.cloudfunctions.net/api/user",
-        {
-          displayName,
-          email,
-          password,
-          role,
-        }
-      );
-      navigate("/login");
-    } catch (err) {
-      alert(err);
-    }
+  const handleCreateUser = async () => {
+    const payload = {
+      displayName: state.user.firstname,
+      email: state.user.email,
+      password: state.user.pass,
+      role: "role",
+    };
+    await createUser(payload);
+    navigate("/login");
   };
 
   return (

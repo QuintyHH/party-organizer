@@ -1,35 +1,37 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import { MainContext } from "../../store";
 import { PartyRow, PartyRowHeader, PartyListWrapper } from "../party-row";
+import { partyGetListAction, partyResetAction } from "../../store/actions";
+import { getPartiesList } from "../../data/axios";
 import { Button } from "../button";
 
-export const JoinedParties = () => {
-  const { state } = useContext(MainContext);
-  const [joinedList, setJoinedList] = useState([]);
+export const ViewParties = (props) => {
+  const { state, dispatch } = useContext(MainContext);
   const refresh = "/assets/ic_refresh.svg";
-
   useEffect(() => {
-    getFavList();
+    updateState(partyResetAction);
+    handleGetPartyList();
+    console.log(props);
   }, []);
 
   const handleRefresh = () => {
-    setJoinedList([]);
-    getFavList();
+    updateState(partyResetAction);
+    handleGetPartyList();
   };
 
-  const getFavList = () => {
-    let list = state.partyList.filter((item) => {
-      if (item.atendeeList && item.atendeeList.id) {
-        return item.atendeeList.id.includes(state.user.displayName);
-      }
-    });
-    setJoinedList([...joinedList, ...list]);
+  const updateState = (action, ...value) => {
+    dispatch(action(...value));
+  };
+
+  const handleGetPartyList = async () => {
+    const token = state.user.token;
+    updateState(partyGetListAction, await getPartiesList(token));
   };
 
   return (
     <PartyListWrapper>
       <PartyRowHeader />
-      {joinedList.map((party) => {
+      {state.partyList.map((party) => {
         return <PartyRow key={party.id}>{party}</PartyRow>;
       })}
       <Button
