@@ -44,7 +44,8 @@ export const PartyRow = ({ children }) => {
   };
 
   const handleDeleteParty = () => {
-    deleteParty(token, children.id);
+    const payload = { id: children.id };
+    deleteParty(token, payload);
     handleRefresh();
     console.log("deleted");
   };

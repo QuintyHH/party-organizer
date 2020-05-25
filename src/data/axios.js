@@ -7,9 +7,7 @@ const userAPI = "/user";
 
 export const createParty = async (token, payload) => {
   try {
-    axios.defaults.headers.common = {
-      Authorization: `Bearer ${token}`,
-    };
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     await axios.post(`${baseAPI}${partyAPI}`, payload);
   } catch (err) {
     alert(err);
@@ -18,9 +16,7 @@ export const createParty = async (token, payload) => {
 
 export const attendParty = async (token, payload) => {
   try {
-    axios.defaults.headers.common = {
-      Authorization: `Bearer ${token}`,
-    };
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     await axios.patch(`${baseAPI}${partyAPI}`, payload);
   } catch (err) {
     alert(err);
@@ -29,10 +25,11 @@ export const attendParty = async (token, payload) => {
 
 export const deleteParty = async (token, payload) => {
   try {
-    axios.defaults.headers.common = {
-      Authorization: `Bearer ${token}`,
-    };
-    await axios.delete(`${baseAPI}${partyAPI}`, payload);
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.defaults.headers.common["Content-Type"] =
+      "application/json; charset=UTF-8";
+    console.log(`${baseAPI}${partyAPI}`, payload);
+    await axios.delete(`${baseAPI}${partyAPI}`, { data: payload });
   } catch (err) {
     alert(err);
   }
@@ -40,9 +37,7 @@ export const deleteParty = async (token, payload) => {
 
 export const getPartiesList = async (token) => {
   try {
-    axios.defaults.headers.common = {
-      Authorization: `Bearer ${token}`,
-    };
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     let response = await axios.get(`${baseAPI}${partyAPI}`);
     return response.data.partyList;
   } catch (err) {
