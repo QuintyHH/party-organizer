@@ -13,6 +13,7 @@ import {
   userUpdateBirthDateAction,
   userUpdatePasswordAction,
 } from "../../store/actions";
+import { navigate } from "@reach/router";
 
 export const Signup = () => {
   const { state, dispatch } = useContext(MainContext);
@@ -46,6 +47,7 @@ export const Signup = () => {
           role,
         }
       );
+      navigate("/login");
     } catch (err) {
       alert(err);
     }

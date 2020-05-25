@@ -4,6 +4,7 @@ export const USER_UPDATE_DISPLAYNAME = "USER_UPDATE_DISPLAYNAME";
 export const USER_UPDATE_TELEPHONE = "USER_UPDATE_TELEPHONE";
 export const USER_UPDATE_EMAIL = "USER_UPDATE_EMAIL";
 export const USER_UPDATE_BIRTHDATE = "USER_UPDATE_BIRTHDATE";
+export const USER_UPDATE_ID = "USER_UPDATE_ID";
 export const USER_UPDATE_PASSWORD = "USER_UPDATE_PASSWORD";
 export const USER_UPDATE_TOKEN = "USER_UPDATE_TOKEN";
 export const USER_UPDATE_ROLE = "USER_UPDATE_ROLE";
@@ -25,6 +26,11 @@ export const userUpdateLastNameAction = (value) => ({
 export const userUpdateDisplayNameAction = (value) => ({
   type: USER_UPDATE_DISPLAYNAME,
   displayName: value,
+});
+
+export const userUpdateIDAction = (value) => ({
+  type: USER_UPDATE_ID,
+  uid: value,
 });
 
 export const userUpdateTelephoneAction = (value) => ({

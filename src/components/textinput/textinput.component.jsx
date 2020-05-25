@@ -1,5 +1,9 @@
 import React from "react";
-import { StyledInput, StyledInputWrapper } from "./textinput.styles";
+import {
+  StyledInput,
+  StyledInputWrapper,
+  StyledLabel,
+} from "./textinput.styles";
 export const TextInput = ({
   type,
   name,
@@ -13,7 +17,7 @@ export const TextInput = ({
 }) => {
   return (
     <StyledInputWrapper width={width} display={display}>
-      {label}
+      <StyledLabel>{label}</StyledLabel>
       <StyledInput
         type={type}
         name={name}

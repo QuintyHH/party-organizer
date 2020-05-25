@@ -22,7 +22,7 @@ export const PartiesNav = ({ children }) => {
               <Button>Joined</Button>
             </Link>
 
-            <Link to="created">
+            <Link to="favorite">
               <Button>Favorite</Button>
             </Link>
           </ButtonGroup>

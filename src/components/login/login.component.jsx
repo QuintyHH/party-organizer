@@ -13,6 +13,7 @@ import {
   userUpdateFirstNameAction,
   userUpdateLastNameAction,
   userUpdateDisplayNameAction,
+  userUpdateIDAction,
 } from "../../store/actions";
 import { auth } from "../../data/firebase";
 
@@ -43,6 +44,7 @@ export const Login = () => {
       let role = (await auth.currentUser.getIdTokenResult()).claims.role;
       let token = await auth.currentUser.getIdToken();
       updateUserState(user, role, token);
+      console.log(user);
       navigate("/party/new");
     } catch (err) {
       alert(err);
@@ -54,6 +56,7 @@ export const Login = () => {
     updateState(userUpdateFirstNameAction, user.displayName.split(" ")[0]);
     updateState(userUpdateLastNameAction, user.displayName.split(" ")[1]);
     updateState(userUpdateDisplayNameAction, user.displayName);
+    updateState(userUpdateIDAction, user.uid);
     updateState(userUpdatePasswordAction, undefined);
     updateState(userUpdateTokenAction, token);
   };

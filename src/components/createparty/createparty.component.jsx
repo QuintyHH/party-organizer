@@ -19,10 +19,6 @@ export const CreateParty = () => {
   const createParty = async () => {
     try {
       const author = state.user.displayName;
-      let payload = {
-        bodyParameters: {},
-      };
-      console.log("payload", payload);
       axios.defaults.headers.common = {
         Authorization: `Bearer ${state.user.token}`,
       };

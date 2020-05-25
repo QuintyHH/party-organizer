@@ -7,6 +7,7 @@ import {
   USER_UPDATE_BIRTHDATE,
   USER_UPDATE_PASSWORD,
   USER_UPDATE_TOKEN,
+  USER_UPDATE_ID,
   USER_UPDATE_ROLE,
   USER_RESET,
   PARTY_GET_LIST,
@@ -39,6 +40,11 @@ const userReducer = (state, action) => {
       return {
         ...state,
         bday: action.bday,
+      };
+    case USER_UPDATE_ID:
+      return {
+        ...state,
+        uid: action.uid,
       };
     case USER_UPDATE_PASSWORD:
       return {

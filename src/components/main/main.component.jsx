@@ -1,21 +1,31 @@
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
 import { Menu } from "../menu";
 import { Slider } from "../slider";
 import { Header } from "../header";
 import { Login } from "../login";
 import { StyledWrapper } from "./main.styles";
 import { ContentWrapper } from "../content";
-import { Router } from "@reach/router";
+import { Router, navigate } from "@reach/router";
 import { Signup } from "../signup";
 import { Help } from "../help";
 import { ViewParties } from "../viewparties";
 import { AuthenticationNav } from "../authentication-nav";
-import { MainContext } from "../../store";
 import { CreateParty } from "../createparty";
 import { PartiesNav } from "../parties-nav";
+import { FavoriteParties } from "../favoriteparties";
+import { CreatedParties } from "../createdparties";
+import { JoinedParties } from "../joinedparties";
 
 export const Main = () => {
-  // const { state, dispatch } = useContext(MainContext);
+  useEffect(() => {
+    if (window.sessionStorage.getItem("userInformation")) {
+      console.log("Still in session");
+      navigate("/party/new");
+    } else {
+      console.log("New session");
+      navigate("/authentication/login");
+    }
+  }, []);
 
   return (
     <StyledWrapper data-test-id="wrapper">
@@ -33,6 +43,9 @@ export const Main = () => {
         <Help path="help" />
         <PartiesNav path="party">
           <ViewParties path="new" />
+          <FavoriteParties path="favorite" />
+          <CreatedParties path="created" />
+          <JoinedParties path="joined" />
           <ContentWrapper path="/">
             <CreateParty path="createparty" />
           </ContentWrapper>
