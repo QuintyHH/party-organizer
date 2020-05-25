@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
 export const PartyNavMenu = styled.div`
-  width: 100%;
-  margin: auto;
+  margin: auto 2rem;
   position: sticky;
   top: 0;
   background-color: #ffffff;
   color: #b2b2b2;
   font-size: 1rem;
-  padding: 1rem;
+  padding: 1rem 0;
   box-sizing: border-box;
   display: grid;
   grid-template-rows: auto;

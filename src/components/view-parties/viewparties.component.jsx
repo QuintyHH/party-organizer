@@ -11,7 +11,6 @@ export const ViewParties = (props) => {
   useEffect(() => {
     updateState(partyResetAction);
     handleGetPartyList();
-    console.log(props);
   }, []);
 
   const handleRefresh = () => {

@@ -29,7 +29,8 @@ const SButtonIcon = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  margin: auto 0 auto 0.5rem;
+  margin: ${(prop) =>
+    prop.iconMargin ? prop.iconMargin : "auto 0 auto 0.5rem"};
   height: 1.5rem;
   width: 1.5rem;
   border-radius: 50px;
@@ -49,6 +50,7 @@ export const StyledButton = ({
   onSubmit,
   display,
   position,
+  iconMargin,
 }) => {
   return (
     <SButtonWrapper
@@ -66,7 +68,11 @@ export const StyledButton = ({
       position={position}
     >
       {icon ? (
-        <SButtonIcon data-test-id="button-icon" icon={icon}></SButtonIcon>
+        <SButtonIcon
+          data-test-id="button-icon"
+          icon={icon}
+          iconMargin={iconMargin}
+        ></SButtonIcon>
       ) : null}
       <SButtonText data-test-id="button-text">{children}</SButtonText>
     </SButtonWrapper>

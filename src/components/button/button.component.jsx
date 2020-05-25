@@ -15,6 +15,7 @@ export const Button = ({
   onClick,
   onSubmit,
   position,
+  iconMargin,
 }) => {
   return (
     <StyledButton
@@ -30,6 +31,7 @@ export const Button = ({
       onClick={onClick}
       onSubmit={onSubmit}
       position={position}
+      iconMargin={iconMargin}
     >
       {children}
     </StyledButton>

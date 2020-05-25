@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { MainContext } from "../../store";
-import { attendParty } from "../../data/axios";
+import { partyGetListAction, partyResetAction } from "../../store/actions";
+import { getPartiesList, attendParty, deleteParty } from "../../data/axios";
 import {
   StyledPartyRow,
   PartyListImg,
@@ -9,10 +10,25 @@ import {
 } from "./partyrow.styles";
 
 export const PartyRow = ({ children }) => {
-  const { state } = useContext(MainContext);
+  const { state, dispatch } = useContext(MainContext);
   const avatar = "/assets/ic_account_circle.svg";
   const add = "/assets/ic_playlist_add.svg";
   const favorite = "/assets/ic_favorite.svg";
+  const discard = "/assets/ic_delete.svg";
+  const token = state.user.token;
+
+  const handleGetPartyList = async () => {
+    updateState(partyGetListAction, await getPartiesList(token));
+  };
+
+  const handleRefresh = () => {
+    updateState(partyResetAction);
+    handleGetPartyList();
+  };
+
+  const updateState = (action, ...value) => {
+    dispatch(action(...value));
+  };
 
   const addToFavorites = () => {
     let favoriteList =
@@ -25,6 +41,12 @@ export const PartyRow = ({ children }) => {
         JSON.stringify([...favoriteList, children])
       );
     }
+  };
+
+  const handleDeleteParty = () => {
+    deleteParty(token, children.id);
+    handleRefresh();
+    console.log("deleted");
   };
 
   const addToAttend = () => {
@@ -54,6 +76,7 @@ export const PartyRow = ({ children }) => {
       <PartyListText>{children.description}</PartyListText>
       <PartyListImgTiny src={favorite} onClick={addToFavorites} />
       <PartyListImgTiny src={add} onClick={addToAttend} />
+      <PartyListImgTiny src={discard} onClick={handleDeleteParty} />
     </StyledPartyRow>
   );
 };

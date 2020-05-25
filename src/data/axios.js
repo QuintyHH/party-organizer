@@ -27,6 +27,17 @@ export const attendParty = async (token, payload) => {
   }
 };
 
+export const deleteParty = async (token, payload) => {
+  try {
+    axios.defaults.headers.common = {
+      Authorization: `Bearer ${token}`,
+    };
+    await axios.delete(`${baseAPI}${partyAPI}`, payload);
+  } catch (err) {
+    alert(err);
+  }
+};
+
 export const getPartiesList = async (token) => {
   try {
     axios.defaults.headers.common = {

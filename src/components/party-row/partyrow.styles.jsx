@@ -8,7 +8,7 @@ export const StyledPartyRow = styled.div`
   box-sizing: border-box;
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
   display: grid;
-  grid-template-columns: 4rem 1fr 1fr 1fr 1fr 4rem 4rem;
+  grid-template-columns: 4rem 1fr 5rem 1fr 1fr 4rem 4rem 4rem;
 `;
 
 export const PartyListWrapper = styled.div`
